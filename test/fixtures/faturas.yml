@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  emissao: 2018-12-21
+  vencimento: 2018-12-21
+  pago: false
+  totalFatura: 9.99
+
+two:
+  emissao: 2018-12-21
+  vencimento: 2018-12-21
+  pago: false
+  totalFatura: 9.99

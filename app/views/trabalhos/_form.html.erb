@@ -1,0 +1,47 @@
+<%= form_with(model: trabalho, local: true) do |form| %>
+  <% if trabalho.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trabalho.errors.count, "error") %> prohibited this trabalho from being saved:</h2>
+
+      <ul>
+      <% trabalho.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :inicio %>
+    <%= form.datetime_select :inicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :final %>
+    <%= form.datetime_select :final %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horas %>
+    <%= form.text_field :horas %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rendimento %>
+    <%= form.text_field :rendimento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :livre %>
+    <%= form.check_box :livre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :faturado %>
+    <%= form.check_box :faturado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

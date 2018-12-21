@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inicio: 2018-12-21 12:09:03
+  final: 2018-12-21 12:09:03
+  horas: MyString
+  rendimento: 9.99
+  livre: false
+  faturado: false
+
+two:
+  inicio: 2018-12-21 12:09:03
+  final: 2018-12-21 12:09:03
+  horas: MyString
+  rendimento: 9.99
+  livre: false
+  faturado: false

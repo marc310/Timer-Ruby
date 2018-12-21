@@ -1,0 +1,37 @@
+<%= form_with(model: fatura, local: true) do |form| %>
+  <% if fatura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fatura.errors.count, "error") %> prohibited this fatura from being saved:</h2>
+
+      <ul>
+      <% fatura.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :emissao %>
+    <%= form.date_select :emissao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vencimento %>
+    <%= form.date_select :vencimento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pago %>
+    <%= form.check_box :pago %>
+  </div>
+
+  <div class="field">
+    <%= form.label :totalFatura %>
+    <%= form.text_field :totalFatura %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

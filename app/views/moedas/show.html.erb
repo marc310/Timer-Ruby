@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cod:</strong>
+  <%= @moeda.cod %>
+</p>
+
+<p>
+  <strong>Simbolo:</strong>
+  <%= @moeda.simbolo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @moeda.descricao %>
+</p>
+
+<%= link_to 'Edit', edit_moeda_path(@moeda) %> |
+<%= link_to 'Back', moedas_path %>

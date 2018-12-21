@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Inicio:</strong>
+  <%= @trabalho.inicio %>
+</p>
+
+<p>
+  <strong>Final:</strong>
+  <%= @trabalho.final %>
+</p>
+
+<p>
+  <strong>Horas:</strong>
+  <%= @trabalho.horas %>
+</p>
+
+<p>
+  <strong>Rendimento:</strong>
+  <%= @trabalho.rendimento %>
+</p>
+
+<p>
+  <strong>Livre:</strong>
+  <%= @trabalho.livre %>
+</p>
+
+<p>
+  <strong>Faturado:</strong>
+  <%= @trabalho.faturado %>
+</p>
+
+<%= link_to 'Edit', edit_trabalho_path(@trabalho) %> |
+<%= link_to 'Back', trabalhos_path %>

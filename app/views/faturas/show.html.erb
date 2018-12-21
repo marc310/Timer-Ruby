@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Emissao:</strong>
+  <%= @fatura.emissao %>
+</p>
+
+<p>
+  <strong>Vencimento:</strong>
+  <%= @fatura.vencimento %>
+</p>
+
+<p>
+  <strong>Pago:</strong>
+  <%= @fatura.pago %>
+</p>
+
+<p>
+  <strong>Totalfatura:</strong>
+  <%= @fatura.totalFatura %>
+</p>
+
+<%= link_to 'Edit', edit_fatura_path(@fatura) %> |
+<%= link_to 'Back', faturas_path %>

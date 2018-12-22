@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_21_164550) do
+ActiveRecord::Schema.define(version: 2018_12_22_010719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2018_12_21_164550) do
     t.boolean "ativo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "cliente_id"
+    t.index ["cliente_id"], name: "index_projetos_on_cliente_id"
   end
 
   create_table "tarefas", force: :cascade do |t|
@@ -105,7 +107,14 @@ ActiveRecord::Schema.define(version: 2018_12_21_164550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "notas"
+    t.bigint "projeto_id"
+    t.bigint "tarefa_id"
+    t.index ["projeto_id"], name: "index_trabalhos_on_projeto_id"
+    t.index ["tarefa_id"], name: "index_trabalhos_on_tarefa_id"
   end
 
   add_foreign_key "clientes", "moedas"
+  add_foreign_key "projetos", "clientes"
+  add_foreign_key "trabalhos", "projetos"
+  add_foreign_key "trabalhos", "tarefas"
 end

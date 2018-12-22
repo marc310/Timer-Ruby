@@ -12,6 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :projeto %>
+    <%= collection_select(:trabalho, :projeto_id, Projeto.all, :id, :nome) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tarefa %>
+    <%= collection_select(:trabalho, :tarefa_id, Tarefa.all, :id, :nome) %>
+  </div>
+
+  <div class="field">
     <%= form.label :inicio %>
     <%= form.datetime_select :inicio %>
   </div>

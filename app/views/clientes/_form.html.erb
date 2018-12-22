@@ -36,6 +36,11 @@
     <%= form.check_box :ativo %>
   </div>
 
+    <div class="field">
+    <%= form.label :moeda %>
+    <%= collection_select(:cliente, :moeda_id, Moeda.all, :id, :simbolo) %>
+  </div>
+
   <div class="field">
     <%= form.label :precoHora %>
     <%= form.text_field :precoHora %>

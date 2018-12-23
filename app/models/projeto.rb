@@ -1,3 +1,3 @@
 class Projeto < ApplicationRecord
-	belongs_to:cliente
+	has_one:cliente
 end

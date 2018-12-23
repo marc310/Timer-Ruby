@@ -4,7 +4,7 @@ class CreateProjetos < ActiveRecord::Migration[5.2]
       t.string :nome
       t.string :descricao
       t.decimal :precoProjeto
-      t.boolean :ativo
+      t.integer :status
 
       t.timestamps
     end

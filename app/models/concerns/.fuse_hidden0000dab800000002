@@ -1,0 +1,24 @@
+module MoedaAdmin
+  extend ActiveSupport::Concern
+
+  included do
+    rails_admin do
+      object_label_method :simbolo
+
+      list do
+        field :id
+        field :simbolo
+      end
+
+      show do
+        field :id
+        field :simbolo
+      end
+
+      edit do
+        field :simbolo
+        field :cod
+      end
+    end
+  end
+end

@@ -1,0 +1,80 @@
+module PostAdmin
+  extend ActiveSupport::Concern
+
+  included do
+    rails_admin do
+      object_label_method :simbolo
+
+      # Example 1
+      #
+      # This configuration shows a text field instead of an enum to select the moeda
+      # which seems to be the expected functionality:
+      # https://github.com/sferik/rails_admin/blob/ffa30e0563e86a91bf88a312911b77d1bfffc2dc/app/assets/javascripts/rails_admin/ra.filter-box.js#L70
+      #
+      field :moeda do
+        visible false
+
+        # This doesn't seem to do anything, the filter text field is empty by default
+        default_value do
+          bindings[:controller].current_moeda.id
+        end
+      end
+
+      # Example 2
+      #
+      # The following configuration throws an exception:
+      #     NoMethodError - undefined method `current_moeda' for nil:NilClass
+      #
+      # field :moeda, :enum do
+      #   visible false
+      #   enum do
+      #     controller = bindings[:controller]
+      #     moeda.accessible_by(controller.current_moeda).map { |moeda| [moeda.name, moeda.id] }
+      #   end
+      # end
+
+      # Example 3
+      #
+      # This shows a dropdown box to select a moeda to filter, but it shows all moedas,
+      # not only the ones accessible by the current moeda.
+      # (Which makes not much sense in this small example, but imagine a use case where
+      # not all moedas can see all other moeda accounts.)
+      #
+      # Note that one can't use `field :moeda` here because the SQL query for filtering will fail
+      # with the following exception:
+      #    ActiveRecord::StatementInvalid - SQLite3::SQLException: no such column: posts.moeda:
+      #    SELECT  "posts".* FROM "posts" WHERE ('t'='t') AND ((posts.moeda IN ('1')))  ORDER BY posts.id desc LIMIT 20 OFFSET 0
+      #
+      # Using :moeda_id for the enum (also below in the list block for the default filters) does work and filters the rows correctly.
+      #
+      # field :moeda_id, :enum do
+      #   visible false
+      #   pretty_value do
+      #     bindings[:object].try(:name)
+      #   end
+      #   enum do
+      #     moeda.all.map { |moeda| [moeda.name, moeda.id] }
+      #   end
+      # end
+
+      list do
+        filters [:moeda] # use :moeda_id here for example 3
+        field :id
+        field :moeda
+        field :simbolo
+      end
+
+      show do
+        field :id
+        field :moeda
+        field :simbolo
+        field :cod
+      end
+
+      edit do
+        field :simbolo
+        field :cod
+      end
+    end
+  end
+end

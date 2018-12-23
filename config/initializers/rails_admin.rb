@@ -47,6 +47,12 @@ RailsAdmin.config do |config|
         field  :email
         field  :telefone
         field  :celular
+        field  :precoHora
+        field  :moeda_id, :enum do
+        enum do
+          Moeda.all.collect {|p| [p.simbolo, p.id]}
+          end
+        end
       end
 
       edit do
@@ -54,6 +60,12 @@ RailsAdmin.config do |config|
         field  :email
         field  :telefone
         field  :celular
+        field  :moeda_id, :enum do
+        enum do
+          Moeda.all.collect {|p| [p.simbolo, p.id]}
+          end
+        end
+        field  :precoHora
         end
 
       list do
@@ -61,6 +73,12 @@ RailsAdmin.config do |config|
         field  :email
         field  :telefone
         field  :celular
+        field  :moeda_id, :enum do
+        enum do
+          Moeda.all.collect {|p| [p.simbolo, p.id]}
+          end
+        end
+        field  :precoHora
       end
     end
     # ******************************************************************
@@ -98,6 +116,72 @@ RailsAdmin.config do |config|
         field  :cliente_id, :enum do
         enum do
           Cliente.all.collect {|p| [p.nome, p.id]}
+          end
+        end
+      end
+    end
+    # ******************************************************************
+    config.model Trabalho do
+      create do
+        field  :inicio
+        field  :final
+        field  :horas
+        field  :rendimento
+        field  :livre
+        field  :faturado  do
+          visible false
+        end
+        field  :notas
+        field  :projeto_id, :enum do
+        enum do
+          Projeto.all.collect {|p| [p.nome, p.id]}
+          end
+        end
+        field  :tarefa_id, :enum do
+        enum do
+          Tarefa.all.collect {|p| [p.nome, p.id]}
+          end
+        end
+      end
+
+      edit do
+        field  :inicio
+        field  :final
+        field  :horas
+        field  :rendimento
+        field  :livre
+        field  :faturado  do
+          visible false
+        end
+        field  :notas
+        field  :projeto_id, :enum do
+        enum do
+          Projeto.all.collect {|p| [p.nome, p.id]}
+          end
+        end
+        field  :tarefa_id, :enum do
+        enum do
+          Tarefa.all.collect {|p| [p.nome, p.id]}
+          end
+        end
+      end
+
+      list do
+        field  :horas
+        field  :rendimento
+        field  :livre
+        field  :faturado  do
+          visible false
+        end
+        field  :notas
+        field  :projeto_id, :enum do
+        enum do
+          Projeto.all.collect {|p| [p.nome, p.id]}
+          end
+        end
+        field  :tarefa_id, :enum do
+        enum do
+          Tarefa.all.collect {|p| [p.nome, p.id]}
           end
         end
       end

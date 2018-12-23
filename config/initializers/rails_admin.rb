@@ -1,5 +1,10 @@
 RailsAdmin.config do |config|
 
+  config.main_app_name = ["CronoTimer ",""]
+  config.navigation_static_links = {
+    'Marcelo Motta' => 'http://marcelomotta.com'
+  }
+  config.navigation_static_label = "Links Úteis"
   ### Popular gems integration
 
   ## == Devise ==
@@ -122,6 +127,9 @@ RailsAdmin.config do |config|
     end
     # ******************************************************************
     config.model Trabalho do
+      label "Registros de Trabalho"
+      weight -2
+      navigation_icon 'fa fa-clock-o'
       create do
         field  :inicio
         field  :final
@@ -187,7 +195,12 @@ RailsAdmin.config do |config|
       end
     end
     # ******************************************************************
+    config.model Fatura do
+      label "Financeiro"
+      weight -1
+      navigation_icon 'fa fa-money'
+    end
+    # ******************************************************************
     #
     #
-
 end
